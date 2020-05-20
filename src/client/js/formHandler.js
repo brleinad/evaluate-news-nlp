@@ -2,14 +2,32 @@ function handleSubmit(event) {
     event.preventDefault()
 
     // check what text was put into the form field
-    let formText = document.getElementById('name').value
+    const formText = document.getElementById('name').value
     Client.checkForName(formText)
 
-    console.log("::: Form Submitted :::")
-    fetch('http://localhost:8080/test')
+    console.log("::: Form Submitted :::", formText)
+
+    const data = {link: formText}
+    fetch('http://localhost:8080/post-link', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+    })
+    .then(res => {
+        console.log('First Received: ', res)
+        return fetch('http://localhost:8080/hashtags')
+    })
     .then(res => res.json())
     .then(function(res) {
-        document.getElementById('results').innerHTML = res.message
+        const results = document.getElementById('results')
+        results.innerHTML = ''
+        console.log('Received', res)
+        for (let hashtag of res.hashtags) {
+            const li = document.createElement('li')
+            li.textContent = hashtag
+            results.appendChild(li)
+        }
     })
 }
 

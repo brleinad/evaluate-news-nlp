@@ -9,29 +9,31 @@
 
         <header>
             <div class="">
-                Logo
-            </div>
-            <div class="">
-                navigation
+              <h1>Hashtag Generator</h1>
             </div>
         </header>
 
         <main>
+          <section>
+            <p>
+              Provide a link to an article, blog post, etc, and get hashtag suggestions from a natural language processing.
+            </p>
+          </section>
             <section>
                 <form class="" onsubmit="return Client.handleSubmit(event)">
-                    <input id="name" type="text" name="input" value="" onblur="//onBlur()" placeholder="Name">
-                    <input type="submit" name="" value="submit" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                    <input id="name" type="text" name="input" value="" onblur="//onBlur()" placeholder="article link">
+                    <input type="submit" name="" value="Get Hashtags!" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
                 </form>
             <section>
 
             <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
+                <strong>Hashtags Results:</strong>
+                <div><ul id="results"></ul></div>
             </section>
         </main>
 
         <footer>
-            <p>This is a footer</p>
+            <p></p>
         </footer>
 
     </body>

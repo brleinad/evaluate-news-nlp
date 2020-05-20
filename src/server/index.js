@@ -22,12 +22,38 @@ app.use(express.static('dist'))
 
 console.log(__dirname)
 
+
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
 
-app.get('/test', function (req, res) {
-    res.send(mockAPIResponse)
+let link = ''
+app.post('/post-link', function (req, res) {
+    link = req.body.link
+    console.log('Link: ', link)
+    res.send({success: true})
+    });
+
+app.get('/hashtags', function (req, res) {
+    textapi.hashtags({
+        url: link // 'http://www.bbc.com/sport/0/football/25912393'
+        }, function(error, response) {
+        if (error === null) {
+            console.log(response.hashtags);
+            res.send(response)
+        }
+    });
+    /*
+   textapi.sentiment({
+    'text': 'John is a very good football player!'
+        }, function(error, response) {
+    if (error === null) {
+        console.log(response);
+        res.send(response.json())
+        }
+    });
+    */
+    //res.send(mockAPIResponse)
 })
 
 // designates what port the app will listen to for incoming requests

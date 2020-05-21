@@ -22,7 +22,6 @@ app.use(express.static('dist'))
 
 console.log(__dirname)
 
-
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
 })
@@ -43,17 +42,6 @@ app.get('/hashtags', function (req, res) {
             res.send(response)
         }
     });
-    /*
-   textapi.sentiment({
-    'text': 'John is a very good football player!'
-        }, function(error, response) {
-    if (error === null) {
-        console.log(response);
-        res.send(response.json())
-        }
-    });
-    */
-    //res.send(mockAPIResponse)
 })
 
 // designates what port the app will listen to for incoming requests

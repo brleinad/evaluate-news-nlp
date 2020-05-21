@@ -1,9 +1,18 @@
 function handleSubmit(event) {
     event.preventDefault()
 
+    const results = document.getElementById('results')
+    results.innerHTML = ''
+
     // check what text was put into the form field
     const formText = document.getElementById('name').value
-    Client.checkForName(formText)
+    if (!Client.isValidLink(formText)){
+        const noResults = document.createElement('li')
+        noResults.textContent = 'No results for the given link'
+        results.appendChild(noResults)
+        console.log('Not doing anything')
+        return
+    }
 
     console.log("::: Form Submitted :::", formText)
 
@@ -20,8 +29,6 @@ function handleSubmit(event) {
     })
     .then(res => res.json())
     .then(function(res) {
-        const results = document.getElementById('results')
-        results.innerHTML = ''
         console.log('Received', res)
         for (let hashtag of res.hashtags) {
             const li = document.createElement('li')

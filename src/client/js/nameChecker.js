@@ -1,21 +1,16 @@
-async function checkForName(inputText) {
-    console.log("::: Running checkForName :::", inputText);
+function isValidLink(inputText) {
+    console.log("::: Running isValidLink :::", inputText);
 
-    const response = await fetch(inputText, {
-        method: 'get',
-        mode: 'no-cors',
-        //credentials: 'omit',
-        headers: { 'Content-Type': 'text/plain' }
-        
-    })
-
-    try {
-        console.log('URL exists', response.status)
-        console.log('Got this from URL', response)
-    }catch(error) {
-        console.log('ERROR: ', error)
+    const link = document.createElement('a')
+    link.href = inputText
+    // It's a valid link if it has a host and it's not something in the current page
+    if (link.host != window.location.host && link.host) {
+        console.log('It is a link')
+        return true
     }
-
+    console.log('It is NOT a link')
+    return false
+    //return (link.host != window.location.host && link.host)
 }
 
-export { checkForName }
+export { isValidLink }

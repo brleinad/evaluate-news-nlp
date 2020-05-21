@@ -10,9 +10,6 @@
     "build-dist": "webpack --config webpack.dev.js",
     "start-all": "webpack --config webpack.dev.js && noe src/server/index.js"
   },
-  "jest": {
-      "moduleDirectories": ["dist"]
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -28,6 +25,7 @@
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
+    "babel-jest": "^26.0.1",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.5.3",

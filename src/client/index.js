@@ -1,4 +1,4 @@
-import { isValidLink } from './js/nameChecker'
+import { isValidLink } from './js/linkChecker'
 import { handleSubmit } from './js/formHandler'
 
 console.log("CHANGE!!");
